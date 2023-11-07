@@ -5,6 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./src:/app
+      - ../src:/app
     container_name: haskell-dev
     tty: true

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  haskell-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    container_name: haskell-dev
+    tty: true

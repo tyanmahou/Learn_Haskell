@@ -4,6 +4,16 @@
 - べき乗計算は^が使える
 - [1..10], [1,3..10]
 - [x|x<-[1..10],odd x]
+- func::Int->Int->Int
+  - func x y = x + y
+- hoge :: a -> a 
+  - 型変数
+  - func::Num a => a->a->a
+  - fromIntegral::(Num b, Integral a) => a->b  
+- read "5" ::Int
+# 演算子
+- !! 添え字アクセス
+  - [1,2,3] !! 1 => 2
 # 関数
 ### 演算
 - div 整数除算(/だと小数になる)
@@ -22,3 +32,28 @@
 - zip
 - replicate
   - replicate 3 10 => [10, 10, 10]
+
+### タプル操作
+- fst
+- snd
+
+# 型クラス
+- Eq
+  - ==, /=
+- Ord
+  - >, <, >=, <=
+- Show
+  - show
+- Read
+  - read
+- Enum
+  - [1..10]
+  - succ, pred
+- Bounded
+  - minBound, maxBound
+- Num
+  - Int, Integer, Float, Double
+- Floating
+  - Float, Double  
+- Integral
+  - Int, Integer    

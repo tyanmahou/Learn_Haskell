@@ -11,6 +11,14 @@
   - func::Num a => a->a->a
   - fromIntegral::(Num b, Integral a) => a->b  
 - read "5" ::Int
+- パターンマッチ
+  - fact 0 = 1
+  - fact n = n * fact(n-1))
+  - リストパターンマッチ
+    - head' (x:_) = x
+    - [x,y] (x:y:[])
+  - asパターン
+    - firstLetter all@(x:xs)
 # 演算子
 - !! 添え字アクセス
   - [1,2,3] !! 1 => 2
@@ -57,3 +65,4 @@
   - Float, Double  
 - Integral
   - Int, Integer    
+  - fromIntegral

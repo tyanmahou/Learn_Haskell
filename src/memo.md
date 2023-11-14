@@ -19,6 +19,14 @@
     - [x,y] (x:y:[])
   - asパターン
     - firstLetter all@(x:xs)
+  - ガード
+  　 - max' a b
+        | a <= b    = b
+        | otherwise = a
+  - where
+     - where bmi = weight / height^2
+  - let式
+     - (let a = 9; b = 1 in a + b)
 # 演算子
 - !! 添え字アクセス
   - [1,2,3] !! 1 => 2

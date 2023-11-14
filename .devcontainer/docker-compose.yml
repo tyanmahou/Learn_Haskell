@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ../src:/app
     container_name: haskell-dev
+    volumes:
+      - ../src:/workspace
     tty: true

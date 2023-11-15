@@ -5,6 +5,6 @@
 	"workspaceFolder": "/workspace",
 	"extensions": [
 		"haskell.haskell",
-		"justusadam.language-haskell",
+		"justusadam.language-haskell"
 	]
 }

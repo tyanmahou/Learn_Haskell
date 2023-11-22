@@ -1,3 +1,5 @@
+import qualified Data.Map as Map
+
 data Person = Person
   { firstName :: String,
     lastName :: String,
@@ -28,3 +30,42 @@ dot :: (Num a) => Vector a -> Vector a -> a
 
 vmul :: (Num a) => Vector a -> a -> Vector a
 (Vector i j k) `vmul` m = Vector (i * m) (j * m) (k * m)
+
+data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturaday | Sunday
+  deriving(Eq, Ord, Show, Read, Bounded, Enum)
+
+type PhoneNumber = String
+type Name = String
+type PhoneBook = [(Name, PhoneNumber)]
+
+phoneBook :: PhoneBook
+phoneBook = [
+ ("betty", "555-2938"),
+ ("bonnie", "452-2928"),
+ ("patsy", "493-2928"),
+ ("lucille", "205-2928"),
+ ("wendy", "939-8282"),
+ ("pennny", "853-2492")
+ ]
+
+inPhoneBook :: Name -> PhoneNumber -> PhoneBook -> Bool
+inPhoneBook name pnumber pbook = (name, pnumber) `elem` pbook
+
+type AssocList k v = [(k, v)]
+type IntMap = Map.Map Int
+
+data LockerState = Taken | Free deriving(Show, Eq)
+type Code = String
+type LockerMap = Map.Map Int (LockerState, Code)
+
+lockerLockup :: Int -> LockerMap -> Either String Code
+lockerLockup lockerNumber map = case Map.lookup lockerNumber map of 
+  Nothing -> Left $ show lockerNumber ++ "is not exist"
+  Just (state, code) -> if state /= Taken then Right code
+                                          else Left $ show lockerNumber ++ "is already taken!"
+
+lockers :: LockerMap
+lockers = Map.fromList [
+  (100, (Taken, "ZD39I")),
+  (101, (Free, "JAH3I"))
+ ]                                           

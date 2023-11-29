@@ -7,4 +7,4 @@ main = do
             main
 
 reverseWords:: String ->String
-reverseWords = unwords .map reverse . words            
+reverseWords = unwords .map reverse . words  

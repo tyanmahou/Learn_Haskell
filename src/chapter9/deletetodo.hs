@@ -1,6 +1,7 @@
 import System.IO
 import System.Directory
 import Data.List
+import Control.Exception (bracketOnError)
 
 main = do
     contents <- readFile "chapter9/todo.txt"
@@ -12,9 +13,11 @@ main = do
     numberString <- getLine
     let number = read numberString
         newTodoItems = unlines $ delete (todoTasks !! number) todoTasks
-    (tempName, tempHandle) <- openTempFile "." "temp"
-    hPutStr tempHandle newTodoItems
-    hClose tempHandle
-    removeFile "chapter9/todo.txt"
-    renameFile tempName "chapter9/todo.txt"
-
+    bracketOnError (openTempFile "." "temp")
+      (\(tempName, tempHandle) -> do
+        hClose tempHandle
+        removeFile tempName)
+      (\(tempName, tempHandle) -> do
+        hPutStr tempHandle newTodoItems
+        removeFile "chapter9/todo.txt"
+        renameFile tempName "chapter9/todo.txt")

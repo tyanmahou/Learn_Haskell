@@ -24,3 +24,8 @@ multiWithLog = do
   b <- logNumber 5
   tell ["Gonna multiply these two"]
   return (a * b);
+
+gcd' :: Int -> Int -> Int
+gcd' a b
+ | b == 0    = a
+ | otherwise = gcd' b (a `mod` b)  

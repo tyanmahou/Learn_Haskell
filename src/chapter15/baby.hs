@@ -45,3 +45,5 @@ goLeft (Node _ l _, bs) = (l, L:bs)
 
 goRight :: (Tree a, Breadcrumbs) -> (Tree a, Breadcrumbs)
 goRight (Node _ _ r, bs) = (r, R:bs)
+
+x -: f = f x

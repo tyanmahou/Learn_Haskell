@@ -26,3 +26,5 @@ myDisk = Folder "root"
           ]
       ]
   ]
+
+data FSCrumb = FSCrumb Name [FSItem] [FSItem] deriving (Show)

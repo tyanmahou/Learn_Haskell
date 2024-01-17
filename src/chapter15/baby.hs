@@ -86,4 +86,5 @@ goUp (_, []) = Nothing
 
 topMost :: Zipper a -> Maybe (Zipper a)
 topMost (t, []) = Just (t, [])
-topMost z = topMost =<< goUp z
+-- topMost z = topMost =<< goUp z
+topMost z = goUp z >>= topMost

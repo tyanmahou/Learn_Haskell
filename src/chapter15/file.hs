@@ -4,6 +4,8 @@ type Name = String
 type Data = String
 data FSItem = File Name Data | Folder Name [FSItem] deriving (Show)
 
+x -: f = f x
+
 myDisk :: FSItem
 myDisk = Folder "root"
   [
@@ -42,3 +44,10 @@ fsTo name (Folder folderName items, bs) =
 nameIs :: Name -> FSItem -> Bool
 nameIs name (Folder foldrName _) = name == foldrName
 nameIs name (File fileName _) = name == fileName
+
+fsRename :: Name -> FSZipper -> FSZipper
+fsRename newName (Folder name items, bs) = (Folder newName items, bs)
+fsRename newName (File name dat, bs) = (File newName dat, bs)
+
+fsNewFile :: FSItem -> FSZipper -> FSZipper
+fsNewFile item (Folder folderName items, bs) = (Folder folderName (item:items), bs)
